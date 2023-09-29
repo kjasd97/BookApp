@@ -1,5 +1,4 @@
-package com.ulyanenko.bookapp.presentation
-
+package com.ulyanenko.bookapp.presentation.categories
 
 import android.util.Log
 import androidx.compose.runtime.getValue
@@ -12,7 +11,8 @@ import com.ulyanenko.bookapp.data.network.ApiFactory
 import com.ulyanenko.bookapp.domain.Category
 import kotlinx.coroutines.launch
 
-class MyViewModel : ViewModel() {
+class CategoryViewModel: ViewModel() {
+
 
     var categories: List<Category>? by mutableStateOf(null)
         private set
@@ -20,7 +20,7 @@ class MyViewModel : ViewModel() {
     val mapper = CategoriesMapper()
 
     init {
-    loadCategories()
+        loadCategories()
     }
 
     fun loadCategories() {
@@ -31,5 +31,6 @@ class MyViewModel : ViewModel() {
             categories = categoriesFromNetwork
         }
     }
+
 
 }
