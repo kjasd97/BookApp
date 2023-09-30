@@ -17,70 +17,18 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ulyanenko.bookapp.domain.Category
+import com.ulyanenko.bookapp.presentation.categories.CategoriesList
 import com.ulyanenko.bookapp.ui.theme.BookAppTheme
 
 class MainActivity : ComponentActivity() {
 
-    private val viewModel by viewModels<MyViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             BookAppTheme {
-                CategoriesList()
+                MainScreen()
             }
         }
-    }
-}
-
-@Composable
-fun CategoriesList(myViewModel: MyViewModel = viewModel()) {
-
-    val categories = myViewModel.categories
-
-    if (categories != null) {
-        LazyColumn {
-
-            items(categories) { category ->
-                CategoryCard(category = category)
-            }
-        }
-    } else {
-        Text(text = "Loading categories...")
-    }
-
-}
-
-@Composable
-fun CategoryCard(category: Category) {
-
-    Card(
-        modifier = Modifier
-            .padding(8.dp)
-            .fillMaxWidth()
-    ) {
-
-        Row(modifier = Modifier.padding(16.dp)) {
-            Column() {
-                Text(
-                    text = "Category: ${category.listName}",
-                    fontSize = 17.sp,
-                    fontFamily = FontFamily.Serif
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = "Oldest published date: ${category.oldestPublishedDate}",
-                    fontSize = 12.sp,
-                    fontFamily = FontFamily.Serif
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                Text(
-                    text = "Newest published date: ${category.newestPublishedDate}",
-                    fontSize = 12.sp,
-                    fontFamily = FontFamily.Serif
-                )
-            }
-        }
-
     }
 }
