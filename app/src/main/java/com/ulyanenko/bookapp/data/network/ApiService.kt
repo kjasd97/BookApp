@@ -11,11 +11,11 @@ interface ApiService {
     @GET("lists/names.json?api-key=T2LEjxGYLMW7O0GpJype8rh3rT3ToHnF")
     suspend fun loadCategories(): CategoryResponseDto
 
-    @GET("lists/overview.json?api-key=T2LEjxGYLMW7O0GpJype8rh3rT3ToHnF")
-    suspend fun loadBooks(@Query("list_name") listName: String): BookResponseDto
+    @GET("lists/{list_name}.json?api-key=T2LEjxGYLMW7O0GpJype8rh3rT3ToHnF")
+    suspend fun loadBooks(@Path("list_name") listName: String): BookResponseDto
 
 
-//    @GET("lists/overview.json?list_name={list_name}&api-key=T2LEjxGYLMW7O0GpJype8rh3rT3ToHnF")
+//    @GET("lists/overview.json?{list_name}&api-key=T2LEjxGYLMW7O0GpJype8rh3rT3ToHnF")
 //    suspend fun loadBooks(@Path("list_name") listName: String): BookResponseDto
 
 

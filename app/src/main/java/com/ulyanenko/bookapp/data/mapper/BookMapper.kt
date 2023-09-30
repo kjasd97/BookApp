@@ -17,7 +17,8 @@ class BookMapper {
                 author = bookDto.author,
                 description = bookDto.description,
                 publisher = bookDto.publisher,
-                rank = bookDto.rank
+                rank = bookDto.rank,
+                bookImage = bookDto.bookImage
                 )
             result.add(book)
         }

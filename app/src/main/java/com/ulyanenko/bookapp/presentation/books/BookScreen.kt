@@ -7,8 +7,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -16,9 +19,11 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.compose.AsyncImage
 import com.ulyanenko.bookapp.domain.Book
 import com.ulyanenko.bookapp.presentation.categories.CategoryCard
 
@@ -50,7 +55,7 @@ fun BookScreen(category: String) {
                 }
             }
         } else {
-            Text(text = "Loading repositories...")
+            Text(text = "Loading books...")
         }
     }
 }
@@ -62,50 +67,53 @@ private fun BookItem(book: Book) {
             .padding(8.dp)
             .fillMaxWidth()
     ) {
-//        AsyncImage(
-//            model = repo.owner.avatar_url,
-//            modifier = Modifier
-//                .size(50.dp)
-//                .clip(CircleShape),
-//            contentDescription = null
-//        )
-//        Spacer(modifier = Modifier.width(8.dp))
-
-        Column {
-            Text(
-                text = "Name is: ${book.name}",
-                fontSize = 14.sp
+        Row (modifier = Modifier.padding(16.dp)){
+            AsyncImage(
+                model = book.bookImage,
+                modifier = Modifier
+                    .size(100.dp)
+                    .clip(CircleShape),
+                contentDescription = null
             )
+            Spacer(modifier = Modifier.width(8.dp))
 
-            Spacer(modifier = Modifier.height(4.dp))
+            Column {
+                Text(
+                    text = "Name is: ${book.name}",
+                    fontSize = 14.sp
+                )
 
-            Text(
-                text = "Author: ${book.author}",
-                fontSize = 14.sp
-            )
+                Spacer(modifier = Modifier.height(4.dp))
 
-            Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Author: ${book.author}",
+                    fontSize = 14.sp
+                )
 
-            Text(
-                text = "Description: ${book.description}",
-                fontSize = 14.sp
-            )
+                Spacer(modifier = Modifier.height(4.dp))
 
-            Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Description: ${book.description}",
+                    fontSize = 14.sp
+                )
 
-            Text(
-                text = "Publisher: ${book.publisher}",
-                fontSize = 14.sp
-            )
+                Spacer(modifier = Modifier.height(4.dp))
 
-            Spacer(modifier = Modifier.height(4.dp))
+                Text(
+                    text = "Publisher: ${book.publisher}",
+                    fontSize = 14.sp
+                )
 
-            Text(
-                text = "Rank: ${book.rank}",
-                fontSize = 14.sp
-            )
+                Spacer(modifier = Modifier.height(4.dp))
+
+                Text(
+                    text = "Rank: ${book.rank}",
+                    fontSize = 14.sp
+                )
 
 
+            }
         }
+
     }
 }

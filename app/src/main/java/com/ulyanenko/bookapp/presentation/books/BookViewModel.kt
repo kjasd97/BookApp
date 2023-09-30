@@ -24,7 +24,7 @@ class BookViewModel(category: String): ViewModel() {
 
     fun loadBooks(category: String) {
         viewModelScope.launch {
-            val response = ApiFactory.apiService.loadBooks(category).results.lists.flatMap { it.books }
+            val response = ApiFactory.apiService.loadBooks(category).results.lists
             val booksFromNetwork = mapper. mapResponseToBook (response)
             _books.value = booksFromNetwork
         }

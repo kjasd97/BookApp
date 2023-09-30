@@ -7,6 +7,8 @@ data class BookDto(
     @SerializedName("description") val description: String,
     @SerializedName("author") val author: String,
     @SerializedName("publisher") val publisher: String,
-    @SerializedName("rank") val rank: Int
+    @SerializedName("rank") val rank: Int,
+    @SerializedName("book_image") val bookImage: String
+
 
     )

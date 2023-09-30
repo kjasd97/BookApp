@@ -17,8 +17,8 @@ fun MainScreen() {
 
         composable("categories") {
             CategoriesList(
-                onCategoryClickListener = { catgeory ->
-                    navController.navigate("books/${catgeory.listName}")
+                onCategoryClickListener = { category ->
+                    navController.navigate("books/${category.listName}")
                 }
             )
         }

@@ -17,7 +17,6 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.ulyanenko.bookapp.domain.Book
 import com.ulyanenko.bookapp.domain.Category
 
 
@@ -31,7 +30,9 @@ fun CategoriesList(onCategoryClickListener: (Category) -> Unit) {
         LazyColumn {
 
             items(categories) { category ->
-                CategoryCard(category = category,onCategoryClickListener )
+                CategoryCard(category = category){
+                    onCategoryClickListener(it)
+                }
             }
         }
     } else {
@@ -41,14 +42,14 @@ fun CategoriesList(onCategoryClickListener: (Category) -> Unit) {
 }
 
 @Composable
-fun CategoryCard(category: Category, onCategoryClickListener: (Category) -> Unit) {
+fun CategoryCard(category: Category, onCategoryClickListenerFirst: (Category) -> Unit) {
 
     Card(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
             .clickable {
-                onCategoryClickListener(category)
+                onCategoryClickListenerFirst(category)
             }
     ) {
 
