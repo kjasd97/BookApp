@@ -18,7 +18,8 @@ class BookMapper {
                 description = bookDto.description,
                 publisher = bookDto.publisher,
                 rank = bookDto.rank,
-                bookImage = bookDto.bookImage
+                bookImage = bookDto.bookImage,
+                amazonProductUrl = bookDto.amazonProductUrl
                 )
             result.add(book)
         }

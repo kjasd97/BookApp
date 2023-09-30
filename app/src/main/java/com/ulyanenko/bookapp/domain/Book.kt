@@ -8,5 +8,6 @@ data class Book(
     val author: String,
     val publisher: String,
     val rank: Int,
-    @SerializedName("book_image") val bookImage: String
+    val bookImage: String,
+    val amazonProductUrl: String
 )

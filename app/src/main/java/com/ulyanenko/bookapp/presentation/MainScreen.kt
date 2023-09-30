@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.ulyanenko.bookapp.presentation.books.BookScreen
 import com.ulyanenko.bookapp.presentation.categories.CategoriesList
+import com.ulyanenko.bookapp.presentation.webview.WebViewPage
 
 @Composable
 fun MainScreen() {
@@ -28,7 +29,16 @@ fun MainScreen() {
             arguments = listOf(navArgument("categoryListName") { type = NavType.StringType })
         ) { backStackEntry ->
             val listName = backStackEntry.arguments?.getString("categoryListName") ?: ""
-            BookScreen(listName)
+            BookScreen(listName,navController)
         }
+
+        composable(
+            route = "web_view/{url}",
+            arguments = listOf(navArgument("url") { type = NavType.StringType })
+        ) { backStackEntry ->
+            val url = backStackEntry.arguments?.getString("url") ?: ""
+            WebViewPage(url = url)
+        }
+
     }
 }
