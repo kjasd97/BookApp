@@ -1,5 +1,6 @@
 package com.ulyanenko.bookapp.presentation
 
+import android.app.Application
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -11,7 +12,7 @@ import com.ulyanenko.bookapp.presentation.categories.CategoriesList
 import com.ulyanenko.bookapp.presentation.webview.WebViewPage
 
 @Composable
-fun MainScreen() {
+fun MainScreen(application: Application) {
     val navController = rememberNavController()
 
     NavHost(navController, startDestination = "categories") {
@@ -29,7 +30,7 @@ fun MainScreen() {
             arguments = listOf(navArgument("categoryListName") { type = NavType.StringType })
         ) { backStackEntry ->
             val listName = backStackEntry.arguments?.getString("categoryListName") ?: ""
-            BookScreen(listName,navController)
+            BookScreen(listName,application, navController)
         }
 
         composable(

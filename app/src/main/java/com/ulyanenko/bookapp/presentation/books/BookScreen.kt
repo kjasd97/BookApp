@@ -1,5 +1,6 @@
 package com.ulyanenko.bookapp.presentation.books
 
+import android.app.Application
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -48,10 +49,10 @@ import java.nio.charset.StandardCharsets
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BookScreen(category: String, navController: NavController) {
+fun BookScreen(category: String, application: Application, navController: NavController) {
 
     val viewModel: BookViewModel = viewModel(
-        factory = BookViewModelFactory(category)
+        factory = BookViewModelFactory(category,application)
     )
     val books = viewModel.books.collectAsState()
 
