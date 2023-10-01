@@ -12,7 +12,7 @@ class CategoriesMapper {
         for(categoryDto in categoriesDto){
             val category = Category(
                 listName = categoryDto.listName,
-                oldestPublishedDate =  categoryDto.oldestPublishedDate?: "Unknown Date",
+                oldestPublishedDate =  categoryDto.oldestPublishedDate,
                 newestPublishedDate = categoryDto.newestPublishedDate
             )
             result.add(category)
